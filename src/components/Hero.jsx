@@ -3,25 +3,25 @@ import { Calendar, Users, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const heroSlides = [
   {
-    image: '/Screenshot_2026-07-22_at_7.56.21_PM.png_202607222002.jpeg',
+    image: '/images/night-ambience-facade.jpg',
     subtitle: 'La Gardenia Banquet Hall & Lawn',
     title: 'Banquet Hall & Event Lawn in Chas, Bokaro',
     tag: 'Chas, Bokaro Steel City'
   },
   {
-    image: '/Screenshot_2026-07-22_at_7.53.46_PM.png_202607222001.jpeg',
+    image: '/images/wedding-mandap-stage.jpg',
     subtitle: 'Weddings & Receptions',
     title: 'Indoor Hall & Stage Arrangements',
     tag: 'Stage & Seating Setup'
   },
   {
-    image: '/Screenshot_2026-07-22_at_7.58.17_PM.png_202607222003.jpeg',
+    image: '/images/outdoor-lawn-mandap.jpg',
     subtitle: 'Open-Air Lawn Space',
     title: 'Outdoor Celebrations for Up to 800 Guests',
     tag: 'Spacious Event Lawn'
   },
   {
-    image: '/Screenshot_2026-07-22_at_7.54.36_PM.png_202607222001.jpeg',
+    image: '/images/banquet-dining-hall.jpg',
     subtitle: 'Dining Area',
     title: 'Air-Conditioned Dining Hall & Catering Space',
     tag: 'Banquet Dining Hall'

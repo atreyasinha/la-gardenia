@@ -66,7 +66,7 @@ export default function CateringMenu({ onOpenBooking }) {
           <div className="glass-card" style={{ padding: '0', overflow: 'hidden', height: '100%', minHeight: '380px', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
             <div style={{ position: 'relative', height: '100%' }}>
               <img
-                src="/Screenshot_2026-07-22_at_7.54.36_PM.png_202607222001.jpeg"
+                src="/images/banquet-dining-hall.jpg"
                 alt="La Gardenia Banquet Dining Setup"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />

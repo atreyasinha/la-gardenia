@@ -8,7 +8,7 @@ const venuesList = [
     subtitle: 'Climate-Controlled Indoor Space',
     capacity: '500 Guests Capacity',
     area: '6,500 Sq. Ft.',
-    image: '/Screenshot_2026-07-22_at_7.56.36_PM.png_202607222003.jpeg',
+    image: '/images/monogram-initials-stage.jpg',
     features: [
       'Centralized Air Conditioning',
       'Ceiling Cove Lighting',
@@ -23,7 +23,7 @@ const venuesList = [
     subtitle: 'Spacious Outdoor Event Lawn',
     capacity: '800 Guests Capacity',
     area: '10,000 Sq. Ft.',
-    image: '/Screenshot_2026-07-22_at_7.58.17_PM.png_202607222003.jpeg',
+    image: '/images/outdoor-lawn-mandap.jpg',
     features: [
       'Artificial Turf Grass',
       'Circular Mandap & Stage Area',
@@ -38,7 +38,7 @@ const venuesList = [
     subtitle: 'Dedicated Space for Meals & Catering',
     capacity: '400 Dining Capacity',
     area: '4,500 Sq. Ft.',
-    image: '/Screenshot_2026-07-22_at_7.54.36_PM.png_202607222001.jpeg',
+    image: '/images/banquet-dining-hall.jpg',
     features: [
       'Draped Dining Tables & Chairs',
       'Stainless Steel Chafing Dishes',
@@ -53,7 +53,7 @@ const venuesList = [
     subtitle: 'Birthday & Event Stage Setup',
     capacity: '300 Guests Capacity',
     area: '3,500 Sq. Ft.',
-    image: '/Screenshot_2026-07-22_at_7.55.19_PM.png_202607222002.jpeg',
+    image: '/images/birthday-fairy-lawn-stage.jpg',
     features: [
       'Illuminated Neon Signage',
       'Shimmer Sequin Photo Backdrop',

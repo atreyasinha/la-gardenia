@@ -4,66 +4,66 @@ import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 const galleryItems = [
   {
     id: 1,
-    src: '/Screenshot_2026-07-22_at_7.53.24_PM.png_202607222001.jpeg',
+    src: '/images/entrance-facade.jpg',
     category: 'exterior',
-    title: 'La Gardenia Illuminated Facade',
-    caption: 'Warm gold illuminated cursive signage with wooden paneling and yellow drapes entrance'
+    title: 'La Gardenia Front Entrance',
+    caption: 'Illuminated cursive signage with wooden entrance facade'
   },
   {
     id: 2,
-    src: '/Screenshot_2026-07-22_at_7.53.46_PM.png_202607222001.jpeg',
+    src: '/images/wedding-mandap-stage.jpg',
     category: 'weddings',
     title: 'Royal Mandap & Floral Stage',
-    caption: 'Lush crimson & ivory floral arrangement with crystal chandelier and white leather couch'
+    caption: 'Floral arrangement with chandelier and leather couch seating'
   },
   {
     id: 3,
-    src: '/Screenshot_2026-07-22_at_7.54.36_PM.png_202607222001.jpeg',
+    src: '/images/banquet-dining-hall.jpg',
     category: 'dining',
-    title: 'Grand Banquet Dining Hall',
-    caption: 'Lavish food spread with gold-and-crimson draped tables, silver chafing dishes and ceiling cove lights'
+    title: 'Banquet Dining Hall',
+    caption: 'Food spread with draped dining tables and chafing dishes'
   },
   {
     id: 4,
-    src: '/Screenshot_2026-07-22_at_7.54.53_PM.png_202607222002.jpeg',
+    src: '/images/birthday-sequin-backdrop.jpg',
     category: 'birthdays',
-    title: 'Birthday Balloon & Sequin Studio',
-    caption: 'Purple & rose gold balloon arches with illuminated Happy Birthday neon and butterfly backdrops'
+    title: 'Birthday Balloon Studio',
+    caption: 'Balloon arches with illuminated Happy Birthday neon backdrop'
   },
   {
     id: 5,
-    src: '/Screenshot_2026-07-22_at_7.55.19_PM.png_202607222002.jpeg',
+    src: '/images/birthday-fairy-lawn-stage.jpg',
     category: 'birthdays',
-    title: '1st Birthday Fairy Theme Lawn Stage',
-    caption: 'Grass turf steps, white picket fence, large 3D letters ONE, fairy cutouts and balloon arches'
+    title: '1st Birthday Lawn Stage',
+    caption: 'Grass turf steps, white picket fence, 3D block letters ONE'
   },
   {
     id: 6,
-    src: '/Screenshot_2026-07-22_at_7.56.21_PM.png_202607222002.jpeg',
+    src: '/images/night-ambience-facade.jpg',
     category: 'exterior',
-    title: 'Night Ambience & Glass Facade',
-    caption: 'Stunning evening view of La Gardenia with blue ambient interior lights and pink flower garlands'
+    title: 'Night Ambience Entrance View',
+    caption: 'Evening view of La Gardenia main entrance facade'
   },
   {
     id: 7,
-    src: '/Screenshot_2026-07-22_at_7.56.36_PM.png_202607222003.jpeg',
+    src: '/images/monogram-initials-stage.jpg',
     category: 'weddings',
-    title: 'Customized Initials Stage Setup',
-    caption: 'Gold diamond monogram frame, pink & white floral wall, and executive white tufted sofa seating'
+    title: 'Initials Stage Setup',
+    caption: 'Gold diamond monogram frame with white sofa seating'
   },
   {
     id: 8,
-    src: '/Screenshot_2026-07-22_at_7.58.17_PM.png_202607222003.jpeg',
+    src: '/images/outdoor-lawn-mandap.jpg',
     category: 'weddings',
-    title: 'Outdoor Lawn Mandap & Red Carpet',
-    caption: 'Circular floral arch with hanging Edison bulbs, artificial turf, chandeliers, and red carpet aisle'
+    title: 'Outdoor Lawn Mandap',
+    caption: 'Circular floral arch with Edison lights and red carpet aisle'
   },
   {
     id: 9,
-    src: '/Screenshot_2026-07-22_at_7.58.35_PM.png_202607222003.jpeg',
+    src: '/images/gold-peach-backdrop.jpg',
     category: 'birthdays',
-    title: 'Gold & Peach Celebration Backdrop',
-    caption: 'Shimmering sequin backdrop with metallic gold balloons and floral vase stand'
+    title: 'Celebration Backdrop',
+    caption: 'Sequin backdrop with metallic gold balloons'
   }
 ];
 
@@ -90,10 +90,10 @@ export default function Gallery() {
     <section id="gallery" className="section-padding" style={{ background: 'var(--bg-deep)' }}>
       <div className="container">
         <div className="section-header">
-          <span className="section-subtitle">Real Photographs</span>
+          <span className="section-subtitle">Photographs</span>
           <h2 className="section-title">The La Gardenia Gallery</h2>
           <p className="section-description">
-            Explore actual photos of our illuminated facade, royal wedding mandaps, theme birthday stages, and banquet dining.
+            Actual photos of our venue entrance, wedding mandaps, birthday stages, and dining hall.
           </p>
           <div className="gold-divider" />
         </div>

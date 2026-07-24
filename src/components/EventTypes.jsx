@@ -5,31 +5,31 @@ const eventsList = [
   {
     icon: <Heart size={24} color="var(--gold-main)" />,
     title: 'Weddings & Receptions',
-    image: '/Screenshot_2026-07-22_at_7.53.46_PM.png_202607222001.jpeg',
+    image: '/images/wedding-mandap-stage.jpg',
     desc: 'Stage decoration, mandap arrangements, and seating for marriage functions and receptions.'
   },
   {
     icon: <Cake size={24} color="var(--gold-main)" />,
     title: 'Birthday Parties',
-    image: '/Screenshot_2026-07-22_at_7.55.19_PM.png_202607222002.jpeg',
+    image: '/images/birthday-fairy-lawn-stage.jpg',
     desc: 'Theme stage backdrops, balloon arches, and play areas for kids and milestone birthday parties.'
   },
   {
     icon: <Sparkles size={24} color="var(--gold-main)" />,
     title: 'Engagements & Ring Ceremonies',
-    image: '/Screenshot_2026-07-22_at_7.56.36_PM.png_202607222003.jpeg',
+    image: '/images/monogram-initials-stage.jpg',
     desc: 'Stage setups, floral backdrops, and intimate hall arrangements for ring ceremonies.'
   },
   {
     icon: <Gift size={24} color="var(--gold-main)" />,
     title: 'Anniversaries & Family Functions',
-    image: '/Screenshot_2026-07-22_at_7.58.35_PM.png_202607222003.jpeg',
+    image: '/images/gold-peach-backdrop.jpg',
     desc: 'Decorated seating areas, stage backdrops, and dining setups for family get-togethers.'
   },
   {
     icon: <Briefcase size={24} color="var(--gold-main)" />,
     title: 'Corporate Events & Launches',
-    image: '/Screenshot_2026-07-22_at_7.54.36_PM.png_202607222001.jpeg',
+    image: '/images/banquet-dining-hall.jpg',
     desc: 'Climate-controlled hall with audio-visual equipment support for corporate meetings and launches.'
   }
 ];

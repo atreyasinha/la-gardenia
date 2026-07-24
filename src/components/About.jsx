@@ -20,7 +20,7 @@ export default function About({ onOpenBooking }) {
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--gold-border)', boxShadow: '0 15px 35px rgba(74,61,51,0.1)' }}>
               <img
-                src="/Screenshot_2026-07-22_at_7.53.24_PM.png_202607222001.jpeg"
+                src="/images/entrance-facade.jpg"
                 alt="La Gardenia Front Entrance"
                 style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
               />
@@ -47,7 +47,7 @@ export default function About({ onOpenBooking }) {
               className="about-inset-img"
             >
               <img
-                src="/Screenshot_2026-07-22_at_7.56.36_PM.png_202607222003.jpeg"
+                src="/images/monogram-initials-stage.jpg"
                 alt="La Gardenia Stage Decor"
                 style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
               />
