@@ -98,7 +98,7 @@ export default function Venues({ onOpenBooking }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
             {/* Image Side */}
             <div style={{ position: 'relative', minHeight: '380px' }}>
-              <img
+              <img loading="lazy"
                 src={activeVenue.image}
                 alt={activeVenue.title}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

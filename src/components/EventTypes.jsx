@@ -51,7 +51,7 @@ export default function EventTypes({ onOpenBooking }) {
           {eventsList.map((evt, idx) => (
             <div key={idx} className="glass-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
               <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
-                <img
+                <img loading="lazy"
                   src={evt.image}
                   alt={evt.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

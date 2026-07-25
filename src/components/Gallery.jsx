@@ -135,7 +135,7 @@ export default function Gallery() {
                 border: '1px solid var(--gold-border)',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={item.src}
                 alt={item.title}
                 style={{
@@ -192,7 +192,7 @@ export default function Gallery() {
                 <X size={24} />
               </button>
 
-              <img
+              <img loading="lazy"
                 src={filteredItems[lightboxIndex].src}
                 alt={filteredItems[lightboxIndex].title}
                 className="lightbox-img"

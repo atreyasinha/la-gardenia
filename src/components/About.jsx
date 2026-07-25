@@ -19,7 +19,7 @@ export default function About({ onOpenBooking }) {
           {/* Left Column - Image Stack */}
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--gold-border)', boxShadow: '0 15px 35px rgba(74,61,51,0.1)' }}>
-              <img
+              <img loading="lazy"
                 src="/images/entrance-facade.jpg"
                 alt="La Gardenia Front Entrance"
                 style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
@@ -46,7 +46,7 @@ export default function About({ onOpenBooking }) {
               }}
               className="about-inset-img"
             >
-              <img
+              <img loading="lazy"
                 src="/images/monogram-initials-stage.jpg"
                 alt="La Gardenia Stage Decor"
                 style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
