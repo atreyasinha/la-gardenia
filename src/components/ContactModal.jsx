@@ -94,11 +94,12 @@ export default function ContactModal({ isOpen, onClose }) {
               
               {/* Name */}
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                <label htmlFor="name" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Full Name *
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
+                    id="name"
                     type="text"
                     required
                     placeholder="Enter your name"
@@ -121,11 +122,12 @@ export default function ContactModal({ isOpen, onClose }) {
 
               {/* Phone */}
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                <label htmlFor="phone" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Mobile / WhatsApp Number *
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
+                    id="phone"
                     type="tel"
                     required
                     placeholder="+91 9431911929"
@@ -149,10 +151,11 @@ export default function ContactModal({ isOpen, onClose }) {
               {/* Event Date & Guests (Max 800) */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                  <label htmlFor="eventDate" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                     Event Date *
                   </label>
                   <input
+                    id="eventDate"
                     type="date"
                     required
                     value={formData.eventDate}
@@ -171,10 +174,11 @@ export default function ContactModal({ isOpen, onClose }) {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                  <label htmlFor="guests" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                     Expected Guests
                   </label>
                   <select
+                    id="guests"
                     value={formData.guests}
                     onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
                     style={{
@@ -197,10 +201,11 @@ export default function ContactModal({ isOpen, onClose }) {
 
               {/* Venue Space & Notes */}
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                <label htmlFor="venueSpace" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Venue Space Preference
                 </label>
                 <select
+                  id="venueSpace"
                   value={formData.venueSpace}
                   onChange={(e) => setFormData({ ...formData, venueSpace: e.target.value })}
                   style={{
@@ -221,10 +226,11 @@ export default function ContactModal({ isOpen, onClose }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
+                <label htmlFor="notes" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Special Requests / Notes
                 </label>
                 <textarea
+                  id="notes"
                   rows="3"
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
