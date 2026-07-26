@@ -4,32 +4,34 @@ import { Users, Maximize, CheckCircle2 } from 'lucide-react';
 const venuesList = [
   {
     id: 'indoor-hall',
-    title: 'Indoor Air-Conditioned Hall',
+    title: 'Indoor Air-Conditioned Banquet Hall',
     subtitle: 'Climate-Controlled Indoor Space',
     capacity: '500 Guests Capacity',
     area: '6,500 Sq. Ft.',
     image: '/images/monogram-initials-stage.jpg',
+    alt: 'Air Conditioned Marriage Banquet Hall Interior at La Gardenia Chas Bokaro',
     features: [
       'Centralized Air Conditioning',
-      'Ceiling Cove Lighting',
-      'Leather Sofas & Chairs',
-      'Stage with Backdrop Wall',
-      'Sound System Setup'
+      'Designer Ceiling Cove Lighting',
+      'Executive Leather Sofas & Seating',
+      'Integrated Stage with Backdrop Wall',
+      'High-Definition Sound System Setup'
     ]
   },
   {
     id: 'outdoor-lawn',
-    title: 'Open-Air Lawn Space',
+    title: 'Open-Air Marriage Event Lawn',
     subtitle: 'Spacious Outdoor Event Lawn',
     capacity: '800 Guests Capacity',
     area: '10,000 Sq. Ft.',
     image: '/images/outdoor-lawn-mandap.jpg',
+    alt: 'Open Air Marriage Lawn Mandap with Red Carpet at La Gardenia Bokaro',
     features: [
-      'Artificial Turf Grass',
-      'Circular Mandap & Stage Area',
-      'Red Carpet Walkway',
+      'High-Density Artificial Turf Grass',
+      'Circular Floral Mandap & Stage Area',
+      'Red Carpet Royal Walkway',
       'Fairy Light Decorative Backdrop',
-      'Outdoor Lighting Rigs'
+      'Outdoor Studio Lighting Rigs'
     ]
   },
   {
@@ -39,27 +41,29 @@ const venuesList = [
     capacity: '400 Dining Capacity',
     area: '4,500 Sq. Ft.',
     image: '/images/banquet-dining-hall.jpg',
+    alt: 'Banquet Dining Hall Setup at La Gardenia Chas Bokaro',
     features: [
       'Draped Dining Tables & Chairs',
       'Stainless Steel Chafing Dishes',
-      'Live Food Counters',
+      'Live Food & Chaat Counters',
       'Air-Conditioned Dining Hall',
-      'Service Station'
+      'Dedicated Catering Service Station'
     ]
   },
   {
     id: 'theme-studio',
-    title: 'Celebration Stage Area',
-    subtitle: 'Birthday & Event Stage Setup',
+    title: 'Birthday & Event Stage Area',
+    subtitle: 'Stage & Party Backdrop Setup',
     capacity: '300 Guests Capacity',
     area: '3,500 Sq. Ft.',
     image: '/images/birthday-fairy-lawn-stage.jpg',
+    alt: 'Birthday Party Stage Backdrop and Lawn Setup at La Gardenia Chas',
     features: [
       'Illuminated Neon Signage',
       'Shimmer Sequin Photo Backdrop',
-      'Balloon Archways',
-      '3D Block Letters',
-      'Kids Play Area'
+      'Theme Balloon Archways',
+      '3D Block Lettering',
+      'Interactive Kids Play Area'
     ]
   }
 ];
@@ -68,13 +72,13 @@ export default function Venues() {
   const [activeVenue, setActiveVenue] = useState(venuesList[0]);
 
   return (
-    <section id="venues" className="section-padding" style={{ background: 'var(--bg-elevated)', position: 'relative' }}>
+    <section id="venues" aria-label="Banquet Spaces" className="section-padding" style={{ background: 'var(--bg-elevated)', position: 'relative' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-subtitle">Venue Options</span>
-          <h2 className="section-title">Our Event Spaces</h2>
+          <h2 className="section-title">Indoor Hall & Outdoor Event Lawns in Chas</h2>
           <p className="section-description">
-            Indoor and outdoor options available for weddings, receptions, birthday functions, and corporate gatherings in Chas, Bokaro.
+            Indoor air-conditioned banquet hall and outdoor open-air lawn options for marriage ceremonies, receptions, birthday functions, and corporate events in Chas, Bokaro.
           </p>
           <div className="gold-divider" />
         </div>
@@ -87,6 +91,7 @@ export default function Venues() {
               onClick={() => setActiveVenue(venue)}
               className={`btn ${activeVenue.id === venue.id ? 'btn-gold' : 'btn-outline'}`}
               style={{ padding: '0.65rem 1.3rem', fontSize: '0.88rem' }}
+              aria-label={`View details for ${venue.title}`}
             >
               {venue.title}
             </button>
@@ -100,7 +105,10 @@ export default function Venues() {
             <div style={{ position: 'relative', minHeight: '360px' }}>
               <img
                 src={activeVenue.image}
-                alt={activeVenue.title}
+                alt={activeVenue.alt}
+                loading="lazy"
+                width="600"
+                height="360"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
               

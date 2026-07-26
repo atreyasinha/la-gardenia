@@ -5,6 +5,7 @@ const galleryItems = [
   {
     id: 1,
     src: '/images/entrance-facade.jpg',
+    alt: 'La Gardenia Banquet Hall Front Entrance View in Chas Bokaro',
     category: 'exterior',
     title: 'La Gardenia Front Entrance',
     caption: 'Illuminated cursive signage with wooden entrance facade'
@@ -12,6 +13,7 @@ const galleryItems = [
   {
     id: 2,
     src: '/images/wedding-mandap-stage.jpg',
+    alt: 'Royal Wedding Mandap Floral Stage Decoration at La Gardenia Chas',
     category: 'weddings',
     title: 'Royal Mandap & Floral Stage',
     caption: 'Floral arrangement with chandelier and leather couch seating'
@@ -19,6 +21,7 @@ const galleryItems = [
   {
     id: 3,
     src: '/images/banquet-dining-hall.jpg',
+    alt: 'Banquet Dining Hall and Food Setup at La Gardenia Bokaro',
     category: 'dining',
     title: 'Banquet Dining Hall',
     caption: 'Food spread with draped dining tables and chafing dishes'
@@ -26,6 +29,7 @@ const galleryItems = [
   {
     id: 4,
     src: '/images/birthday-sequin-backdrop.jpg',
+    alt: 'Birthday Function Balloon Decoration at La Gardenia Chas Bokaro',
     category: 'birthdays',
     title: 'Birthday Balloon Studio',
     caption: 'Balloon arches with illuminated Happy Birthday neon backdrop'
@@ -33,6 +37,7 @@ const galleryItems = [
   {
     id: 5,
     src: '/images/birthday-fairy-lawn-stage.jpg',
+    alt: '1st Birthday Party Lawn Stage Setup at La Gardenia Bokaro',
     category: 'birthdays',
     title: '1st Birthday Lawn Stage',
     caption: 'Grass turf steps, white picket fence, 3D block letters ONE'
@@ -40,6 +45,7 @@ const galleryItems = [
   {
     id: 6,
     src: '/images/night-ambience-facade.jpg',
+    alt: 'La Gardenia Evening Illuminated View in Chas Bokaro Steel City',
     category: 'exterior',
     title: 'Night Ambience Entrance View',
     caption: 'Evening view of La Gardenia main entrance facade'
@@ -47,6 +53,7 @@ const galleryItems = [
   {
     id: 7,
     src: '/images/monogram-initials-stage.jpg',
+    alt: 'Engagement Monogram Stage Decoration at La Gardenia Chas',
     category: 'weddings',
     title: 'Initials Stage Setup',
     caption: 'Gold diamond monogram frame with white sofa seating'
@@ -54,6 +61,7 @@ const galleryItems = [
   {
     id: 8,
     src: '/images/outdoor-lawn-mandap.jpg',
+    alt: 'Outdoor Marriage Lawn Mandap and Red Carpet at La Gardenia Bokaro',
     category: 'weddings',
     title: 'Outdoor Lawn Mandap',
     caption: 'Circular floral arch with Edison lights and red carpet aisle'
@@ -61,6 +69,7 @@ const galleryItems = [
   {
     id: 9,
     src: '/images/gold-peach-backdrop.jpg',
+    alt: 'Event Sequin Backdrop Decoration at La Gardenia Chas Bokaro',
     category: 'birthdays',
     title: 'Celebration Backdrop',
     caption: 'Sequin backdrop with metallic gold balloons'
@@ -87,13 +96,13 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="section-padding" style={{ background: 'var(--bg-deep)' }}>
+    <section id="gallery" aria-label="Photo Gallery" className="section-padding" style={{ background: 'var(--bg-deep)' }}>
       <div className="container">
         <div className="section-header">
-          <span className="section-subtitle">Photographs</span>
-          <h2 className="section-title">The La Gardenia Gallery</h2>
+          <span className="section-subtitle">Real Photographs</span>
+          <h2 className="section-title">La Gardenia Photo Gallery</h2>
           <p className="section-description">
-            Actual photos of our venue entrance, wedding mandaps, birthday stages, and dining hall.
+            Photos of our venue entrance facade, marriage mandaps, birthday stages, open-air lawn, and banquet dining hall in Chas, Bokaro.
           </p>
           <div className="gold-divider" />
         </div>
@@ -112,6 +121,7 @@ export default function Gallery() {
               onClick={() => setFilter(cat.id)}
               className={`btn ${filter === cat.id ? 'btn-gold' : 'btn-outline'}`}
               style={{ padding: '0.6rem 1.3rem', fontSize: '0.88rem' }}
+              aria-label={`Filter photos by ${cat.label}`}
             >
               {cat.label}
             </button>
@@ -134,10 +144,17 @@ export default function Gallery() {
                 background: '#ffffff',
                 border: '1px solid var(--gold-border)',
               }}
+              tabIndex={0}
+              role="button"
+              aria-label={`Open lightbox for ${item.title}`}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(index); }}
             >
               <img
                 src={item.src}
-                alt={item.title}
+                alt={item.alt}
+                loading="lazy"
+                width="400"
+                height="280"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -162,10 +179,10 @@ export default function Gallery() {
                 <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#f3e5ab', fontWeight: 600 }}>
                   {item.category === 'dining' ? 'Banquet Dining' : item.category}
                 </span>
-                <h4 style={{ color: '#ffffff', fontSize: '1.15rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 600 }}>
+                <h3 style={{ color: '#ffffff', fontSize: '1.15rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 600 }}>
                   {item.title}
                   <Maximize2 size={18} color="#d4af37" />
-                </h4>
+                </h3>
               </div>
             </div>
           ))}
@@ -173,7 +190,7 @@ export default function Gallery() {
 
         {/* Lightbox Modal */}
         {lightboxIndex !== null && (
-          <div className="lightbox-backdrop" onClick={closeLightbox}>
+          <div className="lightbox-backdrop" onClick={closeLightbox} aria-label="Close Lightbox">
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={closeLightbox}
@@ -188,13 +205,14 @@ export default function Gallery() {
                   borderRadius: '50%',
                   cursor: 'pointer',
                 }}
+                aria-label="Close modal"
               >
                 <X size={24} />
               </button>
 
               <img
                 src={filteredItems[lightboxIndex].src}
-                alt={filteredItems[lightboxIndex].title}
+                alt={filteredItems[lightboxIndex].alt}
                 className="lightbox-img"
               />
 
@@ -221,6 +239,7 @@ export default function Gallery() {
                   borderRadius: '50%',
                   cursor: 'pointer',
                 }}
+                aria-label="Previous photo"
               >
                 <ChevronLeft size={24} />
               </button>
@@ -239,6 +258,7 @@ export default function Gallery() {
                   borderRadius: '50%',
                   cursor: 'pointer',
                 }}
+                aria-label="Next photo"
               >
                 <ChevronRight size={24} />
               </button>

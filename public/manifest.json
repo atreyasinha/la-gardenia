@@ -1,0 +1,16 @@
+{
+  "name": "La Gardenia Banquet Hall & Event Lawn",
+  "short_name": "La Gardenia",
+  "description": "La Gardenia Banquet Hall & Outdoor Event Lawn in Chas, Bokaro Steel City, Jharkhand. Premier venue for marriages, birthday parties, receptions, and corporate events.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#b8860b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
