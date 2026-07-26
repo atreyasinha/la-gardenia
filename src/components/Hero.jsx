@@ -43,7 +43,7 @@ export default function Hero({ onOpenBooking }) {
 
   return (
     <section id="hero" aria-label="Hero Introduction" style={{ position: 'relative', minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '90px', paddingBottom: '3rem', overflow: 'hidden' }}>
-      {/* Background Image Slider with Eager Image Loading for LCP Optimization */}
+      {/* Background Image Slider */}
       {heroSlides.map((slide, index) => (
         <div
           key={index}
@@ -74,7 +74,7 @@ export default function Hero({ onOpenBooking }) {
       <div className="container" style={{ position: 'relative', zIndex: 10, padding: '2rem 1rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Subtitle */}
-        <span className="section-subtitle" style={{ fontSize: 'clamp(1.4rem, 4vw, 2.1rem)', margin: '0 0 0.4rem 0', color: 'var(--gold-main)' }}>
+        <span className="section-subtitle" style={{ fontSize: 'clamp(1.4rem, 4vw, 2.1rem)', margin: '0 0 0.4rem 0', color: 'var(--gold-dark)' }}>
           {heroSlides[currentSlide].subtitle}
         </span>
 
@@ -100,38 +100,83 @@ export default function Hero({ onOpenBooking }) {
 
         {/* Single Primary Action Button */}
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '2.5rem' }}>
-          <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.9rem 2.4rem', fontSize: '1rem' }} aria-label="Inquire venue booking">
+          <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.9rem 2.4rem', fontSize: '1rem', minHeight: '48px', minWidth: '200px' }} aria-label="Inquire venue booking">
             <Calendar size={18} /> Inquire Booking
           </button>
         </div>
 
-        {/* Minimal Slider Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', marginTop: '1rem' }}>
-          <button onClick={handlePrev} style={{ background: '#ffffff', border: '1px solid var(--gold-border)', color: 'var(--gold-main)', padding: '0.45rem', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 2px 6px rgba(0,0,0,0.05)' }} aria-label="Previous slide">
-            <ChevronLeft size={18} />
+        {/* Minimal Slider Controls with 44px Touch Targets */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginTop: '1rem' }}>
+          <button
+            onClick={handlePrev}
+            style={{
+              background: '#ffffff',
+              border: '1px solid var(--gold-border)',
+              color: 'var(--gold-dark)',
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+            }}
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={20} />
           </button>
 
-          <div style={{ display: 'flex', gap: '0.4rem' }}>
+          <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
             {heroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
                 style={{
-                  width: i === currentSlide ? '22px' : '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  background: i === currentSlide ? 'var(--gold-main)' : 'rgba(184,134,11,0.3)',
+                  minWidth: '44px',
+                  minHeight: '44px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease',
+                  padding: 0,
                 }}
                 aria-label={`Go to slide ${i + 1}`}
-              />
+              >
+                <span
+                  style={{
+                    width: i === currentSlide ? '22px' : '10px',
+                    height: '10px',
+                    borderRadius: '5px',
+                    background: i === currentSlide ? 'var(--gold-dark)' : 'rgba(110,80,5,0.3)',
+                    transition: 'all 0.3s ease',
+                    display: 'block',
+                  }}
+                />
+              </button>
             ))}
           </div>
 
-          <button onClick={handleNext} style={{ background: '#ffffff', border: '1px solid var(--gold-border)', color: 'var(--gold-main)', padding: '0.45rem', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 3px 8px rgba(0,0,0,0.05)' }} aria-label="Next slide">
-            <ChevronRight size={18} />
+          <button
+            onClick={handleNext}
+            style={{
+              background: '#ffffff',
+              border: '1px solid var(--gold-border)',
+              color: 'var(--gold-dark)',
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+            }}
+            aria-label="Next slide"
+          >
+            <ChevronRight size={20} />
           </button>
         </div>
       </div>

@@ -30,7 +30,7 @@ export default function About() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,21,16,0.8) 0%, transparent 60%)' }} />
               <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', right: '1.5rem' }}>
                 <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#f3e5ab', fontWeight: 600 }}>Venue Entrance</span>
-                <h3 style={{ color: '#fff', fontSize: '1.3rem' }}>La Gardenia Entrance Facade</h3>
+                <p style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 700 }}>La Gardenia Entrance Facade</p>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ export default function About() {
             <span className="section-subtitle">About Our Venue</span>
             <h2 className="section-title">Marriage & Event Venue in Chas, Bokaro Steel City</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.8rem', fontSize: '1.02rem', lineHeight: '1.65' }}>
-              <strong style={{ color: 'var(--gold-main)' }}>La Gardenia Banquet Hall & Event Lawn</strong> provides an air-conditioned indoor hall and a spacious outdoor open-air lawn for gatherings up to 800 guests. Conveniently situated in Chas, Bokaro Steel City, Jharkhand, we host wedding receptions, ring ceremonies, birthday parties, and corporate events.
+              <strong style={{ color: 'var(--gold-dark)' }}>La Gardenia Banquet Hall & Event Lawn</strong> provides an air-conditioned indoor hall and a spacious outdoor open-air lawn for gatherings up to 800 guests. Conveniently situated in Chas, Bokaro Steel City, Jharkhand, we host wedding receptions, ring ceremonies, birthday parties, and corporate events.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem' }}>
