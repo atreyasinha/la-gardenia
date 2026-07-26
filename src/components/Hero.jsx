@@ -43,7 +43,7 @@ export default function Hero({ onOpenBooking }) {
 
   return (
     <section id="hero" aria-label="Hero Introduction" style={{ position: 'relative', minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '90px', paddingBottom: '3rem', overflow: 'hidden' }}>
-      {/* Background Image Slider */}
+      {/* Background Image Slider with Real <img> Tags for Lightning-Fast LCP */}
       {heroSlides.map((slide, index) => (
         <div
           key={index}
@@ -52,13 +52,25 @@ export default function Hero({ onOpenBooking }) {
             inset: 0,
             opacity: index === currentSlide ? 1 : 0,
             transition: 'opacity 1.2s ease-in-out',
-            backgroundImage: `url(${slide.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             zIndex: 1,
           }}
           aria-hidden={index !== currentSlide}
         >
+          <img
+            src={slide.image}
+            alt={slide.alt}
+            fetchpriority={index === 0 ? 'high' : 'low'}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            width="1200"
+            height="800"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
           {/* Light Ambient Overlay Gradient */}
           <div
             style={{
