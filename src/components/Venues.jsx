@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Maximize, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Users, Maximize, CheckCircle2 } from 'lucide-react';
 
 const venuesList = [
   {
@@ -64,7 +64,7 @@ const venuesList = [
   }
 ];
 
-export default function Venues({ onOpenBooking }) {
+export default function Venues() {
   const [activeVenue, setActiveVenue] = useState(venuesList[0]);
 
   return (
@@ -80,24 +80,24 @@ export default function Venues({ onOpenBooking }) {
         </div>
 
         {/* Navigation Tabs */}
-        <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '3rem' }}>
+        <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
           {venuesList.map((venue) => (
             <button
               key={venue.id}
               onClick={() => setActiveVenue(venue)}
               className={`btn ${activeVenue.id === venue.id ? 'btn-gold' : 'btn-outline'}`}
-              style={{ padding: '0.75rem 1.4rem', fontSize: '0.9rem' }}
+              style={{ padding: '0.65rem 1.3rem', fontSize: '0.88rem' }}
             >
               {venue.title}
             </button>
           ))}
         </div>
 
-        {/* Selected Space Card */}
+        {/* Selected Space Details Card */}
         <div className="glass-card" style={{ padding: '0', overflow: 'hidden', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
             {/* Image Side */}
-            <div style={{ position: 'relative', minHeight: '380px' }}>
+            <div style={{ position: 'relative', minHeight: '360px' }}>
               <img
                 src={activeVenue.image}
                 alt={activeVenue.title}
@@ -116,27 +116,21 @@ export default function Venues({ onOpenBooking }) {
             </div>
 
             {/* Details Side */}
-            <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <span className="section-subtitle" style={{ fontSize: '1.5rem', textAlign: 'left', margin: 0, color: 'var(--gold-main)' }}>
+            <div style={{ padding: '2.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span className="section-subtitle" style={{ fontSize: '1.4rem', textAlign: 'left', margin: 0, color: 'var(--gold-main)' }}>
                 {activeVenue.subtitle}
               </span>
-              <h3 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '1.2rem' }}>
+              <h3 style={{ fontSize: '1.9rem', color: 'var(--text-primary)', marginBottom: '1.2rem' }}>
                 {activeVenue.title}
               </h3>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.8rem', marginBottom: '2.2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.75rem' }}>
                 {activeVenue.features.map((feat, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-secondary)' }}>
                     <CheckCircle2 size={18} color="var(--gold-main)" />
                     <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>{feat}</span>
                   </div>
                 ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.85rem 1.8rem' }}>
-                  Reserve This Space <ArrowRight size={16} />
-                </button>
               </div>
             </div>
           </div>

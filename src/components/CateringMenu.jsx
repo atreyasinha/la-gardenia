@@ -42,7 +42,7 @@ const menuCategories = [
   }
 ];
 
-export default function CateringMenu({ onOpenBooking }) {
+export default function CateringMenu() {
   const [activeTab, setActiveTab] = useState('starters');
 
   const currentCategory = menuCategories.find(cat => cat.id === activeTab);
@@ -63,7 +63,7 @@ export default function CateringMenu({ onOpenBooking }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
           
           {/* Menu Image Banner */}
-          <div className="glass-card" style={{ padding: '0', overflow: 'hidden', height: '100%', minHeight: '380px', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
+          <div className="glass-card" style={{ padding: '0', overflow: 'hidden', height: '100%', minHeight: '360px', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
             <div style={{ position: 'relative', height: '100%' }}>
               <img
                 src="/images/banquet-dining-hall.jpg"
@@ -83,13 +83,13 @@ export default function CateringMenu({ onOpenBooking }) {
           {/* Menu Tabs & Items */}
           <div>
             {/* Category Tabs */}
-            <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
               {menuCategories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
                   className={`btn ${activeTab === cat.id ? 'btn-gold' : 'btn-outline'}`}
-                  style={{ padding: '0.65rem 1.2rem', fontSize: '0.88rem' }}
+                  style={{ padding: '0.6rem 1.2rem', fontSize: '0.85rem' }}
                 >
                   {cat.icon} {cat.title}
                 </button>
@@ -97,7 +97,7 @@ export default function CateringMenu({ onOpenBooking }) {
             </div>
 
             {/* Items List */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.85rem' }}>
               {currentCategory.items.map((item, idx) => (
                 <div
                   key={idx}
@@ -105,28 +105,22 @@ export default function CateringMenu({ onOpenBooking }) {
                     background: '#ffffff',
                     border: '1px solid var(--gold-border)',
                     borderRadius: 'var(--radius-sm)',
-                    padding: '0.85rem 1.1rem',
+                    padding: '0.8rem 1rem',
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '0.75rem',
-                    boxShadow: '0 4px 15px rgba(74,61,51,0.03)',
+                    boxShadow: '0 4px 12px rgba(74,61,51,0.02)',
                   }}
                 >
                   <div style={{ color: 'var(--gold-main)', marginTop: '2px' }}>
                     <CheckCircle2 size={16} />
                   </div>
                   <div>
-                    <h4 style={{ color: 'var(--text-primary)', fontSize: '1rem', fontWeight: 600 }}>{item.name}</h4>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.1rem' }}>{item.desc}</p>
+                    <h4 style={{ color: 'var(--text-primary)', fontSize: '0.98rem', fontWeight: 600 }}>{item.name}</h4>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.84rem', marginTop: '0.1rem' }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button onClick={onOpenBooking} className="btn btn-gold">
-                Inquire Full Menu Options
-              </button>
             </div>
 
           </div>

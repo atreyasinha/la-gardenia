@@ -26,11 +26,11 @@ export default function App() {
       {/* Main Sections */}
       <main style={{ flexGrow: 1 }}>
         <Hero onOpenBooking={handleOpenBooking} />
-        <About onOpenBooking={handleOpenBooking} />
-        <Venues onOpenBooking={handleOpenBooking} />
+        <About />
+        <Venues />
         <Gallery />
-        <EventTypes onOpenBooking={handleOpenBooking} />
-        <CateringMenu onOpenBooking={handleOpenBooking} />
+        <EventTypes />
+        <CateringMenu />
         <LocationSection onOpenBooking={handleOpenBooking} />
         <Testimonials />
       </main>
@@ -38,7 +38,7 @@ export default function App() {
       {/* Footer */}
       <Footer onOpenBooking={handleOpenBooking} />
 
-      {/* Sticky Floating Quick Actions */}
+      {/* Sticky Single Floating WhatsApp Action */}
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}

@@ -1,7 +1,7 @@
 import React from 'react';
-import { CheckCircle2, MapPin } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
-export default function About({ onOpenBooking }) {
+export default function About() {
   const highlights = [
     { title: 'Air-Conditioned Indoor Hall', desc: 'Climate-controlled hall with ambient cove lighting and comfortable seating.' },
     { title: 'Open-Air Event Lawn', desc: 'Spacious green lawn suitable for stage mandaps, outdoor seating, and large gatherings.' },
@@ -18,7 +18,7 @@ export default function About({ onOpenBooking }) {
           
           {/* Left Column - Image Stack */}
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--gold-border)', boxShadow: '0 15px 35px rgba(74,61,51,0.1)' }}>
+            <div style={{ position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--gold-border)', boxShadow: '0 15px 35px rgba(74,61,51,0.08)' }}>
               <img
                 src="/images/entrance-facade.jpg"
                 alt="La Gardenia Front Entrance"
@@ -41,7 +41,7 @@ export default function About({ onOpenBooking }) {
                 borderRadius: 'var(--radius-md)',
                 overflow: 'hidden',
                 border: '3px solid #ffffff',
-                boxShadow: '0 15px 35px rgba(74,61,51,0.18)',
+                boxShadow: '0 15px 35px rgba(74,61,51,0.15)',
                 display: 'none',
               }}
               className="about-inset-img"
@@ -62,7 +62,7 @@ export default function About({ onOpenBooking }) {
               <strong style={{ color: 'var(--gold-main)' }}>La Gardenia</strong> offers an air-conditioned indoor banquet hall and a spacious open-air lawn for events up to 800 guests. Located in Chas, Bokaro Steel City, we host marriage functions, birthday parties, ring ceremonies, and corporate events.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem', marginBottom: '2.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem' }}>
               {highlights.map((item, index) => (
                 <div key={index} style={{ display: 'flex', gap: '0.8rem', alignItems: 'flex-start' }}>
                   <div style={{ color: 'var(--gold-main)', flexShrink: 0, marginTop: '3px' }}>
@@ -74,15 +74,6 @@ export default function About({ onOpenBooking }) {
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-              <button onClick={onOpenBooking} className="btn btn-gold">
-                Inquire For Booking
-              </button>
-              <a href="https://maps.app.goo.gl/u86eBzCjV1tTE1ta7" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-                <MapPin size={18} color="var(--gold-main)" /> View Location Map
-              </a>
             </div>
           </div>
 

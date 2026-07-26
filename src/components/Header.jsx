@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Calendar, Menu, X } from 'lucide-react';
+import { Calendar, Menu, X } from 'lucide-react';
 
 export default function Header({ onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,14 +42,14 @@ export default function Header({ onOpenBooking }) {
           : 'linear-gradient(to bottom, rgba(250,247,242,0.98), rgba(250,247,242,0))',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(184, 134, 11, 0.25)' : '1px solid transparent',
-        boxShadow: isScrolled ? '0 8px 25px rgba(74,61,51,0.06)' : 'none',
-        padding: isScrolled ? '0.5rem 0' : '0.85rem 0',
+        borderBottom: isScrolled ? '1px solid rgba(184, 134, 11, 0.2)' : '1px solid transparent',
+        boxShadow: isScrolled ? '0 8px 25px rgba(74,61,51,0.05)' : 'none',
+        padding: isScrolled ? '0.6rem 0' : '1rem 0',
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         
-        {/* Brand Logo - Star icon removed as requested */}
+        {/* Brand Logo */}
         <a href="#hero" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
           <span
             style={{
@@ -68,8 +68,8 @@ export default function Header({ onOpenBooking }) {
           </span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav style={{ display: 'none', gap: '1.5rem', alignItems: 'center' }} className="desktop-nav">
+        {/* Desktop Navigation Links */}
+        <nav style={{ display: 'none', gap: '1.8rem', alignItems: 'center' }} className="desktop-nav">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -77,7 +77,7 @@ export default function Header({ onOpenBooking }) {
               style={{
                 color: 'var(--text-primary)',
                 textDecoration: 'none',
-                fontSize: '0.88rem',
+                fontSize: '0.9rem',
                 fontWeight: 600,
                 letterSpacing: '0.01em',
                 transition: 'color 0.2s ease',
@@ -90,17 +90,9 @@ export default function Header({ onOpenBooking }) {
           ))}
         </nav>
 
-        {/* Action Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <a
-            href="tel:+919431911929"
-            className="btn btn-outline desktop-call-btn"
-            style={{ padding: '0.5rem 0.9rem', fontSize: '0.82rem', display: 'none' }}
-          >
-            <Phone size={15} color="var(--gold-main)" /> +91 9431911929
-          </a>
-
-          <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.55rem 1.1rem', fontSize: '0.82rem' }}>
+        {/* Single Primary Action Button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.6rem 1.3rem', fontSize: '0.85rem' }}>
             <Calendar size={15} /> Book Venue
           </button>
 
@@ -161,28 +153,12 @@ export default function Header({ onOpenBooking }) {
               {link.name}
             </a>
           ))}
-          <a
-            href="tel:+919431911929"
-            style={{
-              color: 'var(--gold-main)',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginTop: '0.3rem',
-              fontWeight: 600,
-              fontSize: '0.95rem',
-            }}
-          >
-            <Phone size={16} /> Call: +91 9431911929
-          </a>
         </div>
       )}
 
       <style>{`
         @media (min-width: 900px) {
           .desktop-nav { display: flex !important; }
-          .desktop-call-btn { display: inline-flex !important; }
           .mobile-toggle-btn { display: none !important; }
         }
       `}</style>
