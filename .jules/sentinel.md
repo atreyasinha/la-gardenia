@@ -1,0 +1,4 @@
+## 2024-07-26 - [Unencoded user input in WhatsApp URL and Missing noopener]
+**Vulnerability:** Found unencoded user input being concatenated into a WhatsApp message URL parameter, creating a potential URL parameter injection vulnerability. Also, `window.open` lacked the `noopener,noreferrer` attribute to prevent reverse tabnabbing.
+**Learning:** In React components when interacting with external APIs directly via window.open, always encode variable user input and ensure secure tab behavior with external links.
+**Prevention:** Always use `encodeURIComponent` when putting string variables into URL parameters. Pass `'noopener,noreferrer'` as the window features string when opening a new tab to avoid malicious manipulation.
