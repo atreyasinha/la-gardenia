@@ -26,8 +26,11 @@ export default function ContactModal({ isOpen, onClose }) {
   };
 
   const sendWhatsApp = () => {
-    const text = `Hi La Gardenia (Chas, Bokaro), I would like to inquire about booking an event!%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Event Date:* ${formData.eventDate}%0A*Event Type:* ${formData.eventType}%0A*Guest Count:* ${formData.guests}%0A*Venue Space:* ${formData.venueSpace}%0A*Notes:* ${formData.notes}`;
-    window.open(`https://wa.me/919431911929?text=${text}`, '_blank');
+    // SECURITY: Use encodeURIComponent to prevent URL parameter injection from user input
+    const text = encodeURIComponent(
+      `Hi La Gardenia (Chas, Bokaro), I would like to inquire about booking an event!\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Event Date:* ${formData.eventDate}\n*Event Type:* ${formData.eventType}\n*Guest Count:* ${formData.guests}\n*Venue Space:* ${formData.venueSpace}\n*Notes:* ${formData.notes}`
+    );
+    window.open(`https://wa.me/919431911929?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
