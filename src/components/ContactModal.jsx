@@ -80,6 +80,7 @@ export default function ContactModal({ isOpen, onClose }) {
             borderRadius: '50%',
             cursor: 'pointer',
           }}
+          aria-label="Close modal"
         >
           <X size={20} />
         </button>
