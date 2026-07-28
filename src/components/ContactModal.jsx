@@ -17,6 +17,23 @@ export default function ContactModal({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // SECURITY: Validate inputs to prevent excessively long payloads (DoS risk)
+    if (
+      formData.name.length > 100 ||
+      formData.phone.length > 20 ||
+      formData.notes.length > 1000
+    ) {
+      console.error('Input validation failed: payload too large');
+      return; // Fail securely without leaking internal state
+    }
+
+    // SECURITY: Validate phone number format
+    if (!/^[\d\+\-\s]+$/.test(formData.phone)) {
+      console.error('Input validation failed: invalid phone format');
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -108,6 +125,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    maxLength="100"
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +154,9 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    maxLength="20"
+                    pattern="^[\d\+\-\s]+$"
+                    title="Please enter a valid phone number (digits, spaces, +, - only)"
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -238,6 +259,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength="1000"
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
