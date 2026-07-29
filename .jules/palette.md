@@ -1,0 +1,3 @@
+## 2025-02-12 - Added Keyboard Focus States
+**Learning:** Found that the app lacked dedicated keyboard focus indicators across components. Setting `outline: none;` on common elements like `.btn` or form inputs creates an accessibility barrier for keyboard users.
+**Action:** Always ensure that removing default outlines is paired with providing a custom, visible alternative like `:focus-visible { outline: ... }`.
