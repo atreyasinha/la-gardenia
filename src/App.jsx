@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -15,11 +15,13 @@ import ContactModal from './components/ContactModal.jsx';
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
-  const handleCloseBooking = () => setIsBookingModalOpen(false);
+  // ⚡ Bolt: Memoize callbacks to prevent unnecessary re-renders of child components
+  const handleOpenBooking = useCallback(() => setIsBookingModalOpen(true), []);
+  const handleCloseBooking = useCallback(() => setIsBookingModalOpen(false), []);
 
-  return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-deep)' }}>
+  // ⚡ Bolt: Memoize static page layout to prevent full tree re-render on modal toggle
+  const pageLayout = useMemo(() => (
+    <>
       {/* Sticky Glass Navbar */}
       <Header onOpenBooking={handleOpenBooking} />
 
@@ -40,6 +42,12 @@ export default function App() {
 
       {/* Sticky Single Floating WhatsApp Action */}
       <FloatingActions />
+    </>
+  ), [handleOpenBooking]);
+
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-deep)' }}>
+      {pageLayout}
 
       {/* Reservation & Booking Modal */}
       <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
