@@ -1,0 +1,3 @@
+## 2024-06-12 - Explicit Label Associations & ARIA States
+**Learning:** Found custom UI components acting as radio buttons (like Event Type/Venue Space) that lacked `aria-pressed` states, rendering them ambiguous to screen readers. Additionally, standard form controls like sliders and selects lacked direct label association (`htmlFor` / `id`) which creates critical accessibility barriers.
+**Action:** Always ensure explicit `htmlFor` / `id` mapping for inputs, use `aria-valuetext` on range sliders to provide human-readable values, and use `aria-pressed` for button groups that function as mutually exclusive selections.
