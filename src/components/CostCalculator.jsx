@@ -64,6 +64,7 @@ export default function CostCalculator({ onOpenBooking }) {
                     <button
                       key={item.id}
                       type="button"
+                      aria-pressed={eventType === item.id}
                       onClick={() => setEventType(item.id)}
                       style={{
                         padding: '0.7rem 0.8rem',
@@ -97,6 +98,7 @@ export default function CostCalculator({ onOpenBooking }) {
                     <button
                       key={item.id}
                       type="button"
+                      aria-pressed={spaceType === item.id}
                       onClick={() => setSpaceType(item.id)}
                       style={{
                         padding: '0.7rem 0.5rem',
@@ -119,17 +121,19 @@ export default function CostCalculator({ onOpenBooking }) {
               {/* 3. Guest Count Slider */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
-                  <label style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <label htmlFor="guestCount" style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     3. Estimated Guests
                   </label>
                   <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>{guestCount} Guests</span>
                 </div>
                 <input
+                  id="guestCount"
                   type="range"
                   min="100"
                   max="1000"
                   step="25"
                   value={guestCount}
+                  aria-valuetext={`${guestCount} Guests`}
                   onChange={(e) => setGuestCount(Number(e.target.value))}
                   style={{
                     width: '100%',
@@ -146,10 +150,11 @@ export default function CostCalculator({ onOpenBooking }) {
 
               {/* 4. Catering & Decor Option */}
               <div>
-                <label style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.6rem' }}>
+                <label htmlFor="cateringType" style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.6rem' }}>
                   4. Culinary & Catering Level
                 </label>
                 <select
+                  id="cateringType"
                   value={cateringType}
                   onChange={(e) => setCateringType(e.target.value)}
                   style={{
@@ -170,10 +175,11 @@ export default function CostCalculator({ onOpenBooking }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.6rem' }}>
+                <label htmlFor="decorTheme" style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.6rem' }}>
                   5. Stage & Floral Decor Style
                 </label>
                 <select
+                  id="decorTheme"
                   value={decorTheme}
                   onChange={(e) => setDecorTheme(e.target.value)}
                   style={{
