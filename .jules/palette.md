@@ -1,0 +1,3 @@
+## 2024-03-01 - Add keyboard support to Gallery lightbox
+**Learning:** Adding custom lightboxes can introduce significant accessibility issues if not carefully configured to handle standard keyboard interactions. In `Gallery.jsx`, the lightbox was accessible using mouse clicks on specific overlay buttons, but lacked keyboard navigation (`ArrowLeft` for previous, `ArrowRight` for next, `Escape` to close). Keyboard events on simple visual lightboxes must be bound at the window level while the modal is open.
+**Action:** When implementing custom visual modals or lightboxes, always pair mouse event handlers with corresponding keyboard bindings using a dedicated `useEffect` hook to intercept standard key presses.

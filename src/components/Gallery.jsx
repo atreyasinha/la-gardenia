@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryItems = [
@@ -85,15 +85,32 @@ export default function Gallery() {
     : galleryItems.filter(item => item.category === filter);
 
   const openLightbox = (index) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  const prevLightbox = () => {
+  const prevLightbox = useCallback(() => {
     setLightboxIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
-  };
+  }, [filteredItems.length]);
 
-  const nextLightbox = () => {
+  const nextLightbox = useCallback(() => {
     setLightboxIndex((prev) => (prev + 1) % filteredItems.length);
-  };
+  }, [filteredItems.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        prevLightbox();
+      } else if (e.key === 'ArrowRight') {
+        nextLightbox();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, closeLightbox, prevLightbox, nextLightbox]);
 
   return (
     <section id="gallery" aria-label="Photo Gallery" className="section-padding" style={{ background: 'var(--bg-deep)' }}>
