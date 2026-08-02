@@ -48,6 +48,37 @@ export default function Footer({ onOpenBooking }) {
             </div>
           </div>
 
+          {/* Sister Restaurant */}
+          <div>
+            <h3 style={{ color: 'var(--text-primary)', fontSize: '1.15rem', marginBottom: '1.2rem', fontFamily: 'var(--font-body)', fontWeight: 700 }}>Our Sister Restaurant</h3>
+            <div style={{ background: 'rgba(184,134,11,0.05)', border: '1px solid rgba(184,134,11,0.2)', padding: '1.2rem', borderRadius: '12px' }}>
+              <h4 style={{ margin: '0 0 0.4rem 0', color: 'var(--gold-dark)', fontSize: '1.15rem', fontFamily: 'var(--font-body)', fontWeight: 700 }}>ChatKara</h4>
+              <p style={{ fontSize: '0.85rem', marginBottom: '1rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+                Authentic Indian chaat, tandoori & gravies. Located right next door!
+              </p>
+              <a
+                href="https://chatkara.lagardenia.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-block',
+                  background: 'var(--gold-main)',
+                  color: '#fff',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  transition: 'background 0.2s ease',
+                }}
+                onMouseEnter={(e) => e.target.style.background = 'var(--gold-dark)'}
+                onMouseLeave={(e) => e.target.style.background = 'var(--gold-main)'}
+              >
+                View Menu & Order
+              </a>
+            </div>
+          </div>
+
           {/* Location & Directions */}
           <div>
             <h3 style={{ color: 'var(--text-primary)', fontSize: '1.15rem', marginBottom: '1.2rem', fontFamily: 'var(--font-body)', fontWeight: 700 }}>Venue & Directions</h3>

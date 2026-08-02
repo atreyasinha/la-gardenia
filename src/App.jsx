@@ -20,6 +20,36 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-deep)' }}>
+      {/* Sister Restaurant Banner */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '36px',
+        backgroundColor: '#1a1a1a',
+        color: '#f4efe6',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        fontSize: '0.85rem',
+        fontWeight: 500,
+        borderBottom: '1px solid rgba(212,175,55,0.3)',
+      }}>
+        Craving authentic Indian flavors? Visit our sister restaurant right next door: &nbsp;
+        <a 
+          href="https://chatkara.lagardenia.in" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: 'var(--gold-main)', fontWeight: 700, textDecoration: 'none' }}
+          onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+          onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+        >
+          ChatKara &rarr;
+        </a>
+      </div>
+
       {/* Sticky Glass Navbar */}
       <Header onOpenBooking={handleOpenBooking} />
 
