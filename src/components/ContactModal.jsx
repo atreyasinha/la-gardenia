@@ -118,7 +118,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       border: '1px solid var(--gold-border)',
                       color: 'var(--text-primary)',
                       borderRadius: '8px',
-                      outline: 'none',
+                      outlineColor: 'var(--gold-main)',
                       fontWeight: 500,
                     }}
                   />
@@ -146,7 +146,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       border: '1px solid var(--gold-border)',
                       color: 'var(--text-primary)',
                       borderRadius: '8px',
-                      outline: 'none',
+                      outlineColor: 'var(--gold-main)',
                       fontWeight: 500,
                     }}
                   />
@@ -173,7 +173,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       border: '1px solid var(--gold-border)',
                       color: 'var(--text-primary)',
                       borderRadius: '8px',
-                      outline: 'none',
+                      outlineColor: 'var(--gold-main)',
                       fontWeight: 500,
                     }}
                   />
@@ -194,7 +194,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       border: '1px solid var(--gold-border)',
                       color: 'var(--text-primary)',
                       borderRadius: '8px',
-                      outline: 'none',
+                      outlineColor: 'var(--gold-main)',
                       fontWeight: 500,
                     }}
                   >
@@ -221,7 +221,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     border: '1px solid var(--gold-border)',
                     color: 'var(--text-primary)',
                     borderRadius: '8px',
-                    outline: 'none',
+                    outlineColor: 'var(--gold-main)',
                     fontWeight: 500,
                   }}
                 >
@@ -248,7 +248,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     border: '1px solid var(--gold-border)',
                     color: 'var(--text-primary)',
                     borderRadius: '8px',
-                    outline: 'none',
+                    outlineColor: 'var(--gold-main)',
                     resize: 'none',
                     fontWeight: 500,
                   }}
