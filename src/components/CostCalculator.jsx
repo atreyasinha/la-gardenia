@@ -131,6 +131,7 @@ export default function CostCalculator({ onOpenBooking }) {
                   step="25"
                   value={guestCount}
                   onChange={(e) => setGuestCount(Number(e.target.value))}
+                  aria-label="Estimated number of guests"
                   style={{
                     width: '100%',
                     accentColor: 'var(--gold-main)',
