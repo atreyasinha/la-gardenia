@@ -28,21 +28,45 @@ const heroSlides = [
   }
 ];
 
+import { useRef } from 'react';
+
 export default function Hero({ onOpenBooking }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const heroRef = useRef(null);
+
+  // ⚡ Bolt: Intersection Observer to pause the auto-slider when the hero section is not visible in the viewport.
+  // This prevents unnecessary state updates, React re-renders, and CSS transition repaints, saving CPU/battery.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5500);
+    let timer;
+    if (isVisible) {
+      timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      }, 5500);
+    }
     return () => clearInterval(timer);
-  }, []);
+  }, [isVisible]);
 
   const handleNext = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   const handlePrev = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   return (
-    <section id="hero" aria-label="Hero Introduction" style={{ position: 'relative', minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '90px', paddingBottom: '3rem', overflow: 'hidden' }}>
+    <section ref={heroRef} id="hero" aria-label="Hero Introduction" style={{ position: 'relative', minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '90px', paddingBottom: '3rem', overflow: 'hidden' }}>
       {/* Background Image Slider with Real <img> Tags for Lightning-Fast LCP */}
       {heroSlides.map((slide, index) => (
         <div
