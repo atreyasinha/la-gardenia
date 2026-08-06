@@ -108,6 +108,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    maxLength="100"
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +137,8 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    maxLength="20"
+                    pattern="[\+0-9\s\-]+"
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -235,9 +238,11 @@ export default function ContactModal({ isOpen, onClose }) {
                 <label htmlFor="notes" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Special Requests / Notes
                 </label>
+                {/* SECURITY: Limit length to prevent massive WhatsApp URL payload DoS */}
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength="500"
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
