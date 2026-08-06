@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -15,8 +15,24 @@ import ContactModal from './components/ContactModal.jsx';
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
-  const handleCloseBooking = () => setIsBookingModalOpen(false);
+  // ⚡ Bolt: Memoize handlers to prevent unnecessary re-renders of child components
+  const handleOpenBooking = useCallback(() => setIsBookingModalOpen(true), []);
+  const handleCloseBooking = useCallback(() => setIsBookingModalOpen(false), []);
+
+  // ⚡ Bolt: Memoize the heavy static content to prevent full page re-render when modal state changes
+  // This saves significant React reconciliation time when the booking modal opens or closes.
+  const mainContent = useMemo(() => (
+    <main style={{ flexGrow: 1 }}>
+      <Hero onOpenBooking={handleOpenBooking} />
+      <About />
+      <Venues />
+      <Gallery />
+      <EventTypes />
+      <CateringMenu />
+      <LocationSection onOpenBooking={handleOpenBooking} />
+      <Testimonials />
+    </main>
+  ), [handleOpenBooking]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-deep)' }}>
@@ -24,16 +40,7 @@ export default function App() {
       <Header onOpenBooking={handleOpenBooking} />
 
       {/* Main Sections */}
-      <main style={{ flexGrow: 1 }}>
-        <Hero onOpenBooking={handleOpenBooking} />
-        <About />
-        <Venues />
-        <Gallery />
-        <EventTypes />
-        <CateringMenu />
-        <LocationSection onOpenBooking={handleOpenBooking} />
-        <Testimonials />
-      </main>
+      {mainContent}
 
       {/* Footer */}
       <Footer onOpenBooking={handleOpenBooking} />
