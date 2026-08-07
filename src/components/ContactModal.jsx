@@ -25,6 +25,9 @@ export default function ContactModal({ isOpen, onClose }) {
     onClose();
   };
 
+  // Calculate today's date for the date picker minimum value (using local timezone)
+  const today = new Date().toLocaleDateString('en-CA');
+
   const sendWhatsApp = () => {
     // SECURITY: Use encodeURIComponent to prevent URL parameter injection from user input
     const text = encodeURIComponent(
@@ -108,6 +111,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    maxLength={100} // SECURITY: Enforce max length to prevent denial-of-service/buffer overflow risks
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +140,9 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    maxLength={20} // SECURITY: Limit length and validate input pattern to prevent injection or abuse
+                    pattern="^[+]?[0-9\s\-\(\)\.]+$"
+                    title="Please enter a valid phone number"
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -164,6 +171,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="eventDate"
                     type="date"
                     required
+                    min={today} // SECURITY: Prevent selection of past dates for logic validation
                     value={formData.eventDate}
                     onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
                     style={{
@@ -238,6 +246,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength={500} // SECURITY: Enforce max length on free-text inputs
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
