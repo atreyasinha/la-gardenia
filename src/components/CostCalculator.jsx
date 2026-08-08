@@ -64,6 +64,7 @@ export default function CostCalculator({ onOpenBooking }) {
                     <button
                       key={item.id}
                       type="button"
+                      aria-pressed={eventType === item.id}
                       onClick={() => setEventType(item.id)}
                       style={{
                         padding: '0.7rem 0.8rem',
@@ -97,6 +98,7 @@ export default function CostCalculator({ onOpenBooking }) {
                     <button
                       key={item.id}
                       type="button"
+                      aria-pressed={spaceType === item.id}
                       onClick={() => setSpaceType(item.id)}
                       style={{
                         padding: '0.7rem 0.5rem',
