@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -10,12 +10,21 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+// ⚡ Bolt: Code-split the contact modal since it's heavy and not initially visible.
+// ⚡ Bolt: This significantly reduces the main JS bundle size.
+const ContactModal = lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  // ⚡ Bolt: Track if modal has ever been opened to defer initial load
+  // without breaking close animations by unmounting instantly.
+  const [hasModalBeenOpened, setHasModalBeenOpened] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setIsBookingModalOpen(true);
+    setHasModalBeenOpened(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +51,14 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {/* ⚡ Bolt: Mount the Suspense boundary only after the user's first click.
+          This defers the heavy network request initially, but keeps the component
+          mounted afterward so it can handle its own close animations. */}
+      {hasModalBeenOpened && (
+        <Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </Suspense>
+      )}
     </div>
   );
 }
