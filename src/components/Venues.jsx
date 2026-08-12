@@ -84,10 +84,14 @@ export default function Venues() {
         </div>
 
         {/* Navigation Tabs */}
-        <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
+        <div role="tablist" aria-label="Venue Options" style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
           {venuesList.map((venue) => (
             <button
               key={venue.id}
+              id={`tab-${venue.id}`}
+              role="tab"
+              aria-selected={activeVenue.id === venue.id}
+              aria-controls={`panel-${venue.id}`}
               onClick={() => setActiveVenue(venue)}
               className={`btn ${activeVenue.id === venue.id ? 'btn-gold' : 'btn-outline'}`}
               style={{ padding: '0.65rem 1.3rem', fontSize: '0.88rem' }}
@@ -99,7 +103,7 @@ export default function Venues() {
         </div>
 
         {/* Selected Space Details Card */}
-        <div className="glass-card" style={{ padding: '0', overflow: 'hidden', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
+        <div id={`panel-${activeVenue.id}`} role="tabpanel" aria-labelledby={`tab-${activeVenue.id}`} className="glass-card" style={{ padding: '0', overflow: 'hidden', background: '#ffffff', border: '1px solid var(--gold-border)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
             {/* Image Side */}
             <div style={{ position: 'relative', minHeight: '360px' }}>
