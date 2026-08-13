@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -10,12 +10,18 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+// ⚡ Bolt: Lazily load the ContactModal to reduce initial bundle size
+const ContactModal = React.lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  // ⚡ Bolt: State latch to mount ContactModal only after the first open request
+  const [hasOpenedModal, setHasOpenedModal] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setIsBookingModalOpen(true);
+    setHasOpenedModal(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +48,12 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {/* ⚡ Bolt: Render conditionally using state latch and wrap in Suspense */}
+      {hasOpenedModal && (
+        <Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </Suspense>
+      )}
     </div>
   );
 }
