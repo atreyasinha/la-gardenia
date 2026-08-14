@@ -119,6 +119,7 @@ export default function Header({ onOpenBooking }) {
             }}
             className="mobile-toggle-btn"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>

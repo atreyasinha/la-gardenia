@@ -1,1 +1,5 @@
 ## 2026-07-25 - Adding IDs to Labels in ContactModal\n**Learning:** Missing 'htmlFor' and 'id' associations for form elements reduces accessibility for screen readers and breaks click-to-focus behavior for labels. While ARIA labels are good, semantic HTML labels with 'id' associations are the standard approach for simple forms.\n**Action:** Ensure all form inputs (<input>, <select>, <textarea>) have unique 'id' attributes and their corresponding <label> elements have matching 'htmlFor' attributes.
+
+## 2023-10-27 - Adding ARIA State Attributes to Custom UI Controls
+**Learning:** Custom UI controls like toggle buttons and tab groups that use standard `<button>` elements need explicit ARIA state attributes (`aria-pressed`, `aria-expanded`, `aria-selected`) to convey their state to screen readers. Relying solely on visual cues (like CSS classes for active states) leaves assistive technology users without crucial context.
+**Action:** When creating or modifying custom UI controls that toggle state or act as tabs, always ensure the appropriate ARIA state attribute is present and accurately reflects the component's internal state.
