@@ -92,6 +92,7 @@ export default function Venues() {
               className={`btn ${activeVenue.id === venue.id ? 'btn-gold' : 'btn-outline'}`}
               style={{ padding: '0.65rem 1.3rem', fontSize: '0.88rem' }}
               aria-label={`View details for ${venue.title}`}
+              aria-pressed={activeVenue.id === venue.id}
             >
               {venue.title}
             </button>
