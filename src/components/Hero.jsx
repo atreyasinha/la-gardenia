@@ -156,6 +156,7 @@ export default function Hero({ onOpenBooking }) {
                   padding: 0,
                 }}
                 aria-label={`Go to slide ${i + 1}`}
+                aria-pressed={i === currentSlide}
               >
                 <span
                   style={{
