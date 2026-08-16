@@ -10,12 +10,18 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+const ContactModal = React.lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [hasMountedModal, setHasMountedModal] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  // ⚡ Bolt: Use a state latch to defer initial ContactModal load without unmounting it on close
+  const handleOpenBooking = () => {
+    setHasMountedModal(true);
+    setIsBookingModalOpen(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +48,11 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {hasMountedModal && (
+        <React.Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </React.Suspense>
+      )}
     </div>
   );
 }
