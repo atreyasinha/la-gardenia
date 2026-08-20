@@ -122,6 +122,7 @@ export default function Gallery() {
               className={`btn ${filter === cat.id ? 'btn-gold' : 'btn-outline'}`}
               style={{ padding: '0.6rem 1.3rem', fontSize: '0.88rem' }}
               aria-label={`Filter photos by ${cat.label}`}
+              aria-pressed={filter === cat.id}
             >
               {cat.label}
             </button>
