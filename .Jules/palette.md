@@ -1,1 +1,5 @@
 ## 2026-07-25 - Adding IDs to Labels in ContactModal\n**Learning:** Missing 'htmlFor' and 'id' associations for form elements reduces accessibility for screen readers and breaks click-to-focus behavior for labels. While ARIA labels are good, semantic HTML labels with 'id' associations are the standard approach for simple forms.\n**Action:** Ensure all form inputs (<input>, <select>, <textarea>) have unique 'id' attributes and their corresponding <label> elements have matching 'htmlFor' attributes.
+
+## 2026-07-26 - Screen Reader State for Toggle Groups
+**Learning:** The application heavily relies on standard `<button>` elements styled as toggle groups/tabs (e.g., in Catering Menu, Gallery filters, and Cost Calculator) rather than using native radio buttons or complex tablist widgets. Without explicit state attributes, screen readers cannot determine which option is currently selected.
+**Action:** Always append the `aria-pressed={state === id}` attribute to these standard `<button>` elements when they function as mutually exclusive or toggleable selections within a group.
