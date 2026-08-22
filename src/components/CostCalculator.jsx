@@ -76,6 +76,7 @@ export default function CostCalculator({ onOpenBooking }) {
                         cursor: 'pointer',
                         transition: 'all 0.25s ease',
                       }}
+                      aria-pressed={eventType === item.id}
                     >
                       {item.label}
                     </button>
@@ -109,6 +110,7 @@ export default function CostCalculator({ onOpenBooking }) {
                         cursor: 'pointer',
                         transition: 'all 0.25s ease',
                       }}
+                      aria-pressed={spaceType === item.id}
                     >
                       {item.label}
                     </button>
