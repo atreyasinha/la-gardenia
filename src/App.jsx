@@ -10,12 +10,18 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+// ⚡ Bolt: Code-split ContactModal to reduce initial bundle size since it's not needed immediately on load.
+const ContactModal = React.lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [hasOpenedBookingModal, setHasOpenedBookingModal] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setIsBookingModalOpen(true);
+    setHasOpenedBookingModal(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +48,12 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {/* ⚡ Bolt: Use a state latch (hasOpenedBookingModal) to defer the initial network request without conditionally unmounting on close */}
+      {hasOpenedBookingModal && (
+        <React.Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </React.Suspense>
+      )}
     </div>
   );
 }
