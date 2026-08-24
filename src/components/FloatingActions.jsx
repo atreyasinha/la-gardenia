@@ -19,6 +19,7 @@ export default function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         title="Chat on WhatsApp (+91 9431911929)"
+        aria-label="Chat on WhatsApp"
         style={{
           width: '54px',
           height: '54px',
