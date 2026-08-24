@@ -10,12 +10,24 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+// ⚡ Bolt: Lazy load the ContactModal to reduce the initial bundle size.
+// It is relatively large and not needed until the user explicitly requests to book a venue.
+const ContactModal = React.lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  // ⚡ Bolt: State latch to defer loading the modal's bundle until first opened.
+  // This allows the modal to stay mounted and preserve any built-in exit animations
+  // after it has been loaded once.
+  const [hasOpenedBookingModal, setHasOpenedBookingModal] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setIsBookingModalOpen(true);
+    if (!hasOpenedBookingModal) {
+      setHasOpenedBookingModal(true);
+    }
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +54,12 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {/* ⚡ Bolt: Render the lazy-loaded modal only after the latch is set. */}
+      {hasOpenedBookingModal && (
+        <React.Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </React.Suspense>
+      )}
     </div>
   );
 }
