@@ -90,6 +90,7 @@ export default function CateringMenu() {
                   onClick={() => setActiveTab(cat.id)}
                   className={`btn ${activeTab === cat.id ? 'btn-gold' : 'btn-outline'}`}
                   style={{ padding: '0.6rem 1.2rem', fontSize: '0.85rem' }}
+                  aria-pressed={activeTab === cat.id}
                 >
                   {cat.icon} {cat.title}
                 </button>
