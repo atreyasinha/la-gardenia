@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -10,12 +10,19 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+// ⚡ Bolt: Code-split the ContactModal to reduce initial bundle size, as it is only needed when a user explicitly requests to book.
+const ContactModal = lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  // ⚡ Bolt: State latch to load the chunk only when needed but keep it mounted when closed (to preserve exit animations if any exist in the future, or just to avoid unmounting/remounting cost)
+  const [hasModalRendered, setHasModalRendered] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setIsBookingModalOpen(true);
+    setHasModalRendered(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +49,11 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {hasModalRendered && (
+        <Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </Suspense>
+      )}
     </div>
   );
 }
