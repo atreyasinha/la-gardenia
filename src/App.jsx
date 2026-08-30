@@ -10,12 +10,18 @@ import LocationSection from './components/LocationSection.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Footer from './components/Footer.jsx';
 import FloatingActions from './components/FloatingActions.jsx';
-import ContactModal from './components/ContactModal.jsx';
+
+// ⚡ Bolt: Code-split ContactModal.jsx to defer network request and reduce initial bundle size.
+const ContactModal = React.lazy(() => import('./components/ContactModal.jsx'));
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [hasOpenedModal, setHasOpenedModal] = useState(false);
 
-  const handleOpenBooking = () => setIsBookingModalOpen(true);
+  const handleOpenBooking = () => {
+    setHasOpenedModal(true);
+    setIsBookingModalOpen(true);
+  };
   const handleCloseBooking = () => setIsBookingModalOpen(false);
 
   return (
@@ -42,7 +48,11 @@ export default function App() {
       <FloatingActions />
 
       {/* Reservation & Booking Modal */}
-      <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+      {hasOpenedModal && (
+        <React.Suspense fallback={null}>
+          <ContactModal isOpen={isBookingModalOpen} onClose={handleCloseBooking} />
+        </React.Suspense>
+      )}
     </div>
   );
 }
