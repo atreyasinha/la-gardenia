@@ -3,3 +3,6 @@
 **Learning:** When attaching `scroll` event listeners to `window` in a `useEffect` inside a React component (like `src/components/Header.jsx`), the frequent event fires can cause main thread blocking, particularly if triggering state updates that lead to re-renders.
 
 **Action:** Consistently use `requestAnimationFrame` to throttle `scroll` handlers to browser paint frames, and provide the `{ passive: true }` option to `window.addEventListener('scroll', ...)` to explicitly inform the browser that the event handler will not call `preventDefault()`, allowing composite threads to scroll smoothly.
+## 2024-05-24 - Deferring Modal Rendering While Preserving Animations
+**Learning:** Code-splitting modals using `React.lazy` can cause exit animations to break if the component is conditionally unmounted (e.g. `{isOpen && <Modal />}`).
+**Action:** Use a "state latch" pattern (`hasOpenedModal`) to defer the initial `React.lazy` network request. Once fetched and mounted, rely on the modal's internal `isOpen` prop to control visibility instead of unmounting it, which preserves CSS exit animations.
