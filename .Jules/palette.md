@@ -1,1 +1,4 @@
 ## 2026-07-25 - Adding IDs to Labels in ContactModal\n**Learning:** Missing 'htmlFor' and 'id' associations for form elements reduces accessibility for screen readers and breaks click-to-focus behavior for labels. While ARIA labels are good, semantic HTML labels with 'id' associations are the standard approach for simple forms.\n**Action:** Ensure all form inputs (<input>, <select>, <textarea>) have unique 'id' attributes and their corresponding <label> elements have matching 'htmlFor' attributes.
+## 2026-07-25 - WhatsApp FAB Accessibility
+**Learning:** Icon-only floating action buttons (FABs) often lack screen-reader context and miss keyboard focus states, relying solely on hover effects which alienates keyboard users.
+**Action:** Always ensure icon-only links have an `aria-label` and replicate hover-triggered visual scaling/transitions on the `onFocus` and `onBlur` events for parity in keyboard navigation.
