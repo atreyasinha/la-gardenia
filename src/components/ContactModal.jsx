@@ -26,6 +26,7 @@ export default function ContactModal({ isOpen, onClose }) {
   };
 
   const sendWhatsApp = () => {
+    // 🛡️ Sentinel: Enforced length constraints to prevent oversized payload DoS and parameter injection risk
     // SECURITY: Use encodeURIComponent to prevent URL parameter injection from user input
     const text = encodeURIComponent(
       `Hi La Gardenia (Chas, Bokaro), I would like to inquire about booking an event!\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Event Date:* ${formData.eventDate}\n*Event Type:* ${formData.eventType}\n*Guest Count:* ${formData.guests}\n*Venue Space:* ${formData.venueSpace}\n*Notes:* ${formData.notes}`
@@ -108,6 +109,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    maxLength={100}
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +138,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    maxLength={15}
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -238,6 +241,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength={500}
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
