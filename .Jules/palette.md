@@ -1,1 +1,5 @@
 ## 2026-07-25 - Adding IDs to Labels in ContactModal\n**Learning:** Missing 'htmlFor' and 'id' associations for form elements reduces accessibility for screen readers and breaks click-to-focus behavior for labels. While ARIA labels are good, semantic HTML labels with 'id' associations are the standard approach for simple forms.\n**Action:** Ensure all form inputs (<input>, <select>, <textarea>) have unique 'id' attributes and their corresponding <label> elements have matching 'htmlFor' attributes.
+
+## 2026-07-25 - Floating Action Button Keyboard Parity and ARIA label
+**Learning:** Icon-only links (like floating action buttons) require explicit `aria-label` attributes for screen readers. Furthermore, interactive elements that use `onMouseEnter`/`onMouseLeave` for visual scaling must also implement `onFocus`/`onBlur` to provide the same visual feedback to keyboard users navigating via Tab.
+**Action:** Always pair hover state style changes with equivalent focus state style changes for interactive elements, and always ensure icon-only buttons have explicit ARIA labels.
