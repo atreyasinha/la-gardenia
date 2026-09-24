@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryItems = [
@@ -80,9 +80,12 @@ export default function Gallery() {
   const [filter, setFilter] = useState('all');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const filteredItems = filter === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === filter);
+  // ⚡ Bolt: Memoized filteredItems to prevent unnecessary recalculation of the gallery array on every re-render (e.g., when the lightbox index state changes).
+  const filteredItems = useMemo(() => {
+    return filter === 'all'
+      ? galleryItems
+      : galleryItems.filter(item => item.category === filter);
+  }, [filter]);
 
   const openLightbox = (index) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
