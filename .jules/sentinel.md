@@ -1,4 +1,4 @@
-## 2024-07-27 - [URL Parameter Injection via Unencoded User Input]
-**Vulnerability:** Found unencoded user input (`formData.name`, etc.) directly interpolated into a `window.open` URL (`wa.me`) in `ContactModal.jsx`.
-**Learning:** React components that generate dynamic links or open windows with user input can be vulnerable to URL manipulation/injection if input containing characters like `&` or `=` isn't properly encoded. Also noticed missing `noopener,noreferrer` on dynamic window.open.
-**Prevention:** Always use `encodeURIComponent()` to sanitize user inputs before appending them to a URL. Additionally, pass `'noopener,noreferrer'` to `window.open` as a standard defense against tabnabbing when opening external links.
+## 2024-10-04 - Add input length limits to prevent DoS
+**Vulnerability:** Missing input length limits on form inputs could lead to unbounded string allocation and potential DoS or memory issues when generating WhatsApp links.
+**Learning:** React form inputs without explicit `maxLength` limits allow users to paste or type massive amounts of text, potentially causing performance issues when this data is processed (like in `encodeURIComponent`).
+**Prevention:** Always set sensible `maxLength` attributes on text inputs (`<input type="text">`, `<textarea>`, `<input type="tel">`) as a basic client-side defense-in-depth measure.
