@@ -108,6 +108,8 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    // 🛡️ Sentinel: Enforce max length on input to prevent unbounded string allocation / DoS risk
+                    maxLength={100}
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +138,8 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    // 🛡️ Sentinel: Enforce max length on input to prevent unbounded string allocation / DoS risk
+                    maxLength={20}
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -238,6 +242,8 @@ export default function ContactModal({ isOpen, onClose }) {
                 <textarea
                   id="notes"
                   rows="3"
+                  // 🛡️ Sentinel: Enforce max length on input to prevent unbounded string allocation / DoS risk
+                  maxLength={1000}
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
