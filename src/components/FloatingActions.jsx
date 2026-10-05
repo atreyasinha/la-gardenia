@@ -19,6 +19,7 @@ export default function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         title="Chat on WhatsApp (+91 9431911929)"
+        aria-label="Chat on WhatsApp"
         style={{
           width: '54px',
           height: '54px',
@@ -35,6 +36,8 @@ export default function FloatingActions() {
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
         onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        onFocus={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+        onBlur={(e) => (e.currentTarget.style.transform = 'scale(1)')}
       >
         <MessageCircle size={28} />
       </a>
