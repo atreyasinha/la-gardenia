@@ -97,7 +97,7 @@ export default function ContactModal({ isOpen, onClose }) {
             </div>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              
+              {/* 🛡️ Sentinel: Enforced maxLength on text inputs to prevent DoS via excessively large payload submissions */}
               {/* Name */}
               <div>
                 <label htmlFor="name" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
@@ -108,6 +108,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="name"
                     type="text"
                     required
+                    maxLength={100}
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -136,6 +137,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     id="phone"
                     type="tel"
                     required
+                    maxLength={20}
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -238,6 +240,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength={1000}
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
