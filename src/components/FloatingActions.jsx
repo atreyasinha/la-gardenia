@@ -33,8 +33,11 @@ export default function FloatingActions() {
           transition: 'transform 0.25s ease',
           textDecoration: 'none',
         }}
+        aria-label="Chat on WhatsApp"
         onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
         onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        onFocus={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+        onBlur={(e) => (e.currentTarget.style.transform = 'scale(1)')}
       >
         <MessageCircle size={28} />
       </a>
