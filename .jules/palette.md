@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility gaps in core lead-generation modal
+**Learning:** Found critical accessibility gaps in the primary conversion tool (ContactModal). Missing form label associations (`htmlFor` -> `id`) for visually custom inputs, which prevent screen reader users from filling out the form effectively. Also discovered an icon-only "close" button lacking an `aria-label`. These are significant barriers for a booking flow.
+**Action:** When auditing core conversion components, prioritize explicitly linking `<label>` elements to their corresponding `<input>`, `<select>`, and `<textarea>` fields, rather than just relying on visual proximity. Always add descriptive `aria-label`s to unlabelled icon-only control buttons.
