@@ -104,10 +104,12 @@ export default function ContactModal({ isOpen, onClose }) {
                   Full Name *
                 </label>
                 <div style={{ position: 'relative' }}>
+                  {/* 🛡️ Sentinel: Added maxLength validation to prevent excessively large inputs and URL length overflow. */}
                   <input
                     id="name"
                     type="text"
                     required
+                    maxLength={100}
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -132,10 +134,14 @@ export default function ContactModal({ isOpen, onClose }) {
                   Mobile / WhatsApp Number *
                 </label>
                 <div style={{ position: 'relative' }}>
+                  {/* 🛡️ Sentinel: Added maxLength and pattern validation to enforce correct format and prevent large payload DoS. */}
                   <input
                     id="phone"
                     type="tel"
                     required
+                    maxLength={15}
+                    pattern="^\+?[0-9\s\-]{10,15}$"
+                    title="Please enter a valid phone number (10-15 digits)"
                     placeholder="+91 9431911929"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -235,9 +241,11 @@ export default function ContactModal({ isOpen, onClose }) {
                 <label htmlFor="notes" style={{ fontSize: '0.8rem', color: 'var(--gold-main)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.3rem', fontWeight: 700 }}>
                   Special Requests / Notes
                 </label>
+                {/* 🛡️ Sentinel: Added maxLength validation to prevent massive inputs from overloading the WhatsApp URL encoding. */}
                 <textarea
                   id="notes"
                   rows="3"
+                  maxLength={500}
                   placeholder="Tell us about your decor preferences or guest requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
